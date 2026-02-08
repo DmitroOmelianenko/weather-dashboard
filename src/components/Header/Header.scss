@@ -1,0 +1,115 @@
+@use '../../styles/variebles.scss' as *;
+
+// variebles
+// 1. var(--montserrat-font)
+
+header {
+    background-color: #FFF;
+
+    .headerFlex {
+        display: flex;
+    }
+
+
+    .list {
+        display: flex;
+        margin-left: 57px;
+        gap: 35px;
+        display: none;
+
+        @media screen and (min-width: 768px) {
+            display: flex;
+        }
+
+        @media screen and (min-width: 1200px) {
+            gap: 42px;
+            margin-left: 110px;
+            display: flex;
+        }
+    }
+
+    .item {
+        list-style: none;
+    }
+
+    .links {
+            @include font-family($fontMA, 500);
+           
+            cursor: pointer;
+
+            @media screen and (min-width: 768px) {
+                font-size: 10px;
+            }
+
+            @media screen and (min-width: 1200px) {
+                 font-size: 12px;
+            }
+    }
+
+    .loginInfo {
+        margin-left: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 27px;
+        display: none;
+
+        @media screen and (min-width: 768px) {
+            display: flex;
+        }
+
+        @media screen and (min-width: 1200px) {
+            display: flex;
+        }
+
+        .buttonSignUp {
+            background-color: #FFB36C;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 20px;
+            padding-right: 20px;
+            border-radius: 15px;
+            border: none;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            @include font-family($fontMA, 500);
+            font-style: normal;
+        }
+
+
+
+
+    }
+
+    .mobileSection {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: auto;
+
+
+        @media screen and (min-width: 768px) {
+            display: none;
+        }
+
+        @media screen and (min-width: 1200px) {
+            display: none;
+        }
+    }
+
+    .menuButton {
+        background: none;
+        border: none;
+        padding-left: 10px;
+        display: flex;
+        align-items: center; // вирівнює по вертикалі
+        justify-content: center;
+        gap: 5px; // відстань між текстом і картинкою
+        background: none;
+        border: none;
+
+
+        @include font-family($fontMA, 500)
+    }
+}

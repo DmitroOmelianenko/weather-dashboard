@@ -1,0 +1,25 @@
+.container {
+    max-width: 393px;
+    margin: 0 auto; 
+    padding: 0 2px;
+    outline: solid red;
+
+    @media screen and (min-width: 768px) {
+        max-width: 834px;
+        margin: 0 auto;
+        padding: 0 20px;
+          outline: solid red;
+    }
+
+    @media screen and (min-width: 1200px) {
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: 0 20px;
+          outline: solid red;
+    }
+}
+
+button {
+    cursor: pointer;
+}
+
