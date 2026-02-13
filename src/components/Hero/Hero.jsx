@@ -21,12 +21,17 @@ export const Hero = () => {
                 <div className="container">
                     <h1 className="heroTitle">Weather dashboard</h1>
                     <div className="heroFlex">
-                        <h2 className="heroInfo">
-                          Create your personal list of favorite cities and always be aware of the weather.
-                        </h2>
-                        <img src={line} alt="linehero" />
-                        <h2 className="heroDate">{formattedDate}</h2>
-                    </div>
+    {/* Лінія тепер перша в коді для зручності */}
+    <img src={line} alt="linehero" className="heroLine" />
+    
+    <div className="heroTextGroup">
+        <h2 className="heroInfo">
+            Create your personal list of favorite cities and always be aware of the weather.
+        </h2>
+        <h2 className="heroDate">{formattedDate}</h2>
+    </div>
+</div>
+
                     <div className="heroFlex2">
                         <input type="text" className="heroInput" placeholder="Search location..." />
                         <button type="button" className="search">
