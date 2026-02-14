@@ -86,7 +86,7 @@ export const ShowForecast = () => {
                                     <p className="showForecastCountry">{new Date(item.dt * 1000).toLocaleDateString("en-US", {
                                         weekday: "long", day: "2-digit", month: "2-digit", year: "numeric"
                                     })}</p>
-                                    <button className="buttonDetailed">Hourly forecast</button>
+                                    <button className="buttonDetailed" >Hourly forecast</button>
                                     <p>{new Date(item.dt * 1000).toLocaleTimeString("en-US", {
                                         hour: "2-digit", minute: "2-digit"
                                     })}</p>
