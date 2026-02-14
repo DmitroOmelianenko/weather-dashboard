@@ -5,7 +5,7 @@ import list from '../../images/listmenu.svg'
 import '../../styles/_variebles.scss'
 import './Header.scss'
 
-export const Header = () => {
+export const Header = ({ onOpenModal }) => {
 
 
     return (
@@ -26,11 +26,11 @@ export const Header = () => {
                             </li>
                         </ul>
                         <div className="loginInfo">
-                            <button type="button" className="buttonSignUp">Sign Up</button>
+                            <button type="button" onClick={onOpenModal} className="buttonSignUp">Sign Up</button>
                             <img src={user} alt="user" />
                         </div>
                         <div className="mobileSection">
-                            <button type="button" className="menuButton">Menu
+                            <button  type="button" className="menuButton">Menu
                                 <img src={list} alt="list" /></button>
                         </div>
                     </div>

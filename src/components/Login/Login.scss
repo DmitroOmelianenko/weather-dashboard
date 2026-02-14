@@ -1,0 +1,141 @@
+@use '../../styles/variebles' as *;
+
+.backdrop {
+    /* Займає весь екран */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+
+    /* Колір затемнення (чорний з прозорістю 50%) */
+    background-color: rgba(0, 0, 0, 0.5);
+
+    /* Центрування модального вікна */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* Щоб був поверх усіх елементів */
+    z-index: 1000;
+
+    /* Додає ефект розмиття фону (опціонально) */
+    backdrop-filter: blur(4px);
+}
+
+.modal {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 400px;
+    /* Обмежує ширину на десктопах */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+
+    /* Анімація появи (плавне випливання) */
+    animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+
+
+}
+
+.signUpText {
+    @include font-family($fontM, 600);
+    text-align: center;
+}
+
+.labelUsrname {
+     @include font-family($fontM, 400);
+     font-size: 14px;
+     margin-bottom: 15px;
+}
+
+.inputUsername {
+    @include font-family($fontM, 400);
+    margin-bottom: 30px;
+    background-color: #E4E4E4;
+    margin-bottom: 15px;
+     padding-top: 17px;
+     padding-bottom: 16px;
+     padding-left: 20px;
+     padding-right: 246px;
+     border-radius: 10px;
+     border: none;
+}
+
+.labelEmail {
+  @include font-family($fontM, 400);
+     font-size: 14px;
+     margin-bottom: 15px;
+}
+
+.inputEmail {
+    @include font-family($fontM, 400);
+margin-bottom: 30px;
+background-color: #E4E4E4;
+margin-bottom: 15px;
+     padding-top: 17px;
+     padding-bottom: 16px;
+     padding-left: 20px;
+     padding-right: 246px;
+     border-radius: 10px;
+     border: none;
+}
+
+.labelPassword {
+@include font-family($fontM, 400);
+     font-size: 14px;
+     margin-bottom: 15px;
+}
+
+.inputPassword {
+    @include font-family($fontM, 400);
+margin-bottom: 30px;
+background-color: #E4E4E4;
+margin-bottom: 15px;
+     padding-top: 17px;
+     padding-bottom: 16px;
+     padding-left: 20px;
+     padding-right: 246px;
+     border-radius: 10px;
+     border: none;
+}
+
+.buttonSignup {
+    display: block;
+    margin-top: 10px;
+    @include font-family($fontM, 300);
+    background-color: #FFB36C;
+    font-size: 14px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border: none;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.linkLogin {
+    @include font-family($fontM, 500);
+    font-size: 13px;
+    text-align: center;
+    margin-top: 20px;
+}
