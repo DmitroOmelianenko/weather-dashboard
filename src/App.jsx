@@ -4,6 +4,7 @@ import { Header } from "./components/Header/Header.jsx"
 import { ShowForecast } from "./components/ShowForeacast/ShowForeacast.jsx";
 import { Login } from "./components/Login/Login.jsx";
 import { FactsDay } from "./components/FactsDay/FactsDay.jsx"
+import { ImagesGalery } from "./components/ImagesGalery/ImagesGalery.jsx";
 
 const App = () => {
    const [isModalOpen, setIsModalOpen] = useState(false)
@@ -29,6 +30,7 @@ const App = () => {
         <Header onOpenModal={() => setIsModalOpen(true)} /> 
         <ShowForecast />
         <FactsDay />
+        <ImagesGalery />
         </>
      )
 }
