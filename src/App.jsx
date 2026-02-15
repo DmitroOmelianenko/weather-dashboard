@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Header } from "./components/Header/Header.jsx"
 // import { Hero } from "./components/Hero/Hero.jsx"
 import { ShowForecast } from "./components/ShowForeacast/ShowForeacast.jsx";
-import { Login } from "./components/Login/Login.jsx"
+import { Login } from "./components/Login/Login.jsx";
+import { FactsDay } from "./components/FactsDay/FactsDay.jsx"
 
 const App = () => {
    const [isModalOpen, setIsModalOpen] = useState(false)
@@ -27,6 +28,7 @@ const App = () => {
         )}
         <Header onOpenModal={() => setIsModalOpen(true)} /> 
         <ShowForecast />
+        <FactsDay />
         </>
      )
 }
