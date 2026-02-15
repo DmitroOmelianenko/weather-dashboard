@@ -1,0 +1,39 @@
+@use "../../styles/variebles" as *;
+@use "../../styles/global" as *;
+
+.gallery {
+    margin-top: 100px;
+    margin-bottom: 100px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+
+  &__track {
+    display: flex;
+    width: max-content;
+    animation: scroll 30s linear infinite; // постійний рух
+  }
+
+  &__slide {
+    flex: 0 0 auto;
+    width: 250px;
+    margin-right: 20px;
+
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+  }
+}
+
+// ключові кадри для нескінченного руху
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
