@@ -1,1 +1,62 @@
-/*# sourceMappingURL=ImagesGalery.css.map */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+.container {
+  width: 100%;
+  max-width: 393px;
+  margin: 0 auto;
+  padding: 0 20px;
+  outline: solid red;
+}
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 834px;
+    margin: 0 auto;
+    padding: 0 20px;
+    outline: solid red;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 20px;
+    outline: solid red;
+  }
+}
+
+button {
+  cursor: pointer;
+}
+
+.gallery {
+  margin-top: 100px;
+  margin-bottom: 100px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.gallery__track {
+  display: flex;
+  width: -moz-max-content;
+  width: max-content;
+  animation: scroll 30s linear infinite;
+}
+.gallery__slide {
+  flex: 0 0 auto;
+  width: 250px;
+  margin-right: 20px;
+}
+.gallery__slide img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}/*# sourceMappingURL=ImagesGalery.css.map */
