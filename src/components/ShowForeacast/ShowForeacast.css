@@ -1,1 +1,177 @@
-/*# sourceMappingURL=ShowForeacast.css.map */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+.showForecast .showForecastGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 90px;
+  justify-content: center;
+}
+.showForecast .weatherCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  background-color: #E8E8E8;
+  width: 320px;
+  height: 430px;
+  border-radius: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 21px;
+  padding-top: 15px;
+}
+.showForecast .weatherFoto {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.showForecast .weatherTemruture {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  text-align: center;
+  font-size: 32px;
+}
+.showForecast .buttonDetailed {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  background-color: #FFB36C;
+  border-radius: 10px;
+  font-size: 14px;
+  border: none;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 18px;
+  padding-right: 18px;
+}
+.showForecast .weatherFooter {
+  display: flex;
+  align-items: center;
+}
+.showForecast .refreshIcon {
+  margin-right: 10px;
+}
+.showForecast .orangeBtn {
+  background-color: #FFB36C;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 25px;
+  padding-right: 25px;
+  border-radius: 10px;
+  border: none;
+  margin-right: 38px;
+  margin-left: 37px;
+}
+.showForecast .refreshButton {
+  background: none;
+  border: none;
+}
+.showForecast .heartButton {
+  background: none;
+  border: none;
+}
+.showForecast .deleteIconButton {
+  background: none;
+  border: none;
+  width: 30px;
+}
+.showForecast {
+  /* From Uiverse.io by Tsiangana */
+}
+.showForecast .ui-bookmark {
+  --icon-size: 24px;
+  --icon-secondary-color: rgb(77, 77, 77);
+  --icon-hover-color: rgb(97, 97, 97);
+  --icon-primary-color: rgb(252, 54, 54);
+  --icon-circle-border: 1px solid var(--icon-primary-color);
+  --icon-circle-size: 35px;
+  --icon-anmt-duration: 0.3s;
+}
+.showForecast .ui-bookmark input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: none;
+}
+.showForecast .ui-bookmark .bookmark {
+  width: var(--icon-size);
+  height: auto;
+  fill: var(--icon-secondary-color);
+  cursor: pointer;
+  transition: 0.2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  transform-origin: top;
+}
+.showForecast .bookmark::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  box-shadow: 0 30px 0 -4px var(--icon-primary-color), 30px 0 0 -4px var(--icon-primary-color), 0 -30px 0 -4px var(--icon-primary-color), -30px 0 0 -4px var(--icon-primary-color), -22px 22px 0 -4px var(--icon-primary-color), -22px -22px 0 -4px var(--icon-primary-color), 22px -22px 0 -4px var(--icon-primary-color), 22px 22px 0 -4px var(--icon-primary-color);
+  border-radius: 50%;
+  transform: scale(0);
+  padding: 1px;
+}
+.showForecast .bookmark::before {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  border: var(--icon-circle-border);
+  opacity: 0;
+}
+.showForecast {
+  /* actions */
+}
+.showForecast .ui-bookmark:hover .bookmark {
+  fill: var(--icon-hover-color);
+}
+.showForecast .ui-bookmark input:checked + .bookmark::after {
+  animation: circles var(--icon-anmt-duration) cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  animation-delay: var(--icon-anmt-duration);
+}
+.showForecast .ui-bookmark input:checked + .bookmark {
+  fill: var(--icon-primary-color);
+  animation: bookmark var(--icon-anmt-duration) forwards;
+  transition-delay: 0.3s;
+}
+.showForecast .ui-bookmark input:checked + .bookmark::before {
+  animation: circle var(--icon-anmt-duration) cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  animation-delay: var(--icon-anmt-duration);
+}
+@keyframes bookmark {
+  50% {
+    transform: scaleY(0.6);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+@keyframes circle {
+  from {
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  90% {
+    width: var(--icon-circle-size);
+    height: var(--icon-circle-size);
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes circles {
+  from {
+    transform: scale(0);
+  }
+  40% {
+    opacity: 1;
+  }
+  to {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+}/*# sourceMappingURL=ShowForeacast.css.map */

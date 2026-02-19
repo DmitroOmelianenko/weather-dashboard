@@ -1,1 +1,26 @@
-/*# sourceMappingURL=Footer.css.map */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+footer {
+  padding-top: 40px;
+  padding-bottom: 64px;
+  background-color: #FFB36C;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+}
+footer .footerFlex {
+  display: flex;
+  gap: 103px;
+}
+footer .footerList {
+  display: flex;
+  gap: 103px;
+  list-style: none;
+}
+footer .socialsList {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  padding: 0;
+}
+footer .footerDescriprionAddress {
+  max-width: 130px;
+}/*# sourceMappingURL=Footer.css.map */
