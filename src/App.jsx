@@ -33,6 +33,7 @@ const App = () => {
       <FactsDay />
       <ImagesGalery />
       <Footer />
+      
     </>
   );
 };
