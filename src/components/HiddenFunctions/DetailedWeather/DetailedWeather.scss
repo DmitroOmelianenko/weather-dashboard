@@ -1,0 +1,41 @@
+@use "../../../styles/variebles" as *;
+
+.detailedWeather {
+    @include font-family($fontMA, 500);
+    background-color: #E8E8E8;
+    border-radius: 20px;
+
+   .weather-dashboard__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 58px;
+   }
+
+   .weather-dashboard__item {
+    width: 400px;
+    height: 237px;
+    // padding-left: 102;
+    // padding-right: 103px;
+    // padding-bottom: 20px;
+    // padding-top: 20px;
+    background-color: #D9D9D9;
+    list-style: none;
+    border-radius: 10px;
+    text-align: center;
+   }
+
+   .weather-dashboard__icon {
+    width: 85px;
+    height: 85px;
+    margin-top: 23px;
+   }
+
+   .weather-dashboard__label {
+    padding-top: 20px;
+   }
+
+   .weather-dashboard__value {
+    @include font-family($fontMA, 500);
+    font-size: 32px;
+   }
+}

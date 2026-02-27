@@ -1,48 +1,119 @@
-// DetailedWeather.jsx
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import temp from "../../../images/temprutare.svg";
+import rain from "../../../images/rain.svg";
+import pressure from "../../../images/pressure.svg";
+import windy from "../../../images/windy.svg";
+import visibility from "../../../images/visibility.svg";
+import "./DetailedWeather.scss";
 
-export const DetailedWeather = ({ city, isLoggedIn }) => {
+export const DetailedWeather = ({ city }) => {
   const [weather, setWeather] = useState(null);
-  const API_KEY = "fb76fda02c6e2aed31e4ed44cf3f1f65";
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    if (!city || !isLoggedIn) return;
+    if (!city) return; // захист, якщо city порожній
 
-    const fetchWeather = async () => {
-      try {
-        const res = await fetch(
-          `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric&lang=ua`
-        );
-        const data = await res.json();
-        setWeather(data);
-      } catch (err) {
-        console.error("Помилка завантаження погоди:", err);
-      }
-    };
+    const API_KEY = "dffb5faf3da0fbd0a3322d7191b3c18f";
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(
+      city
+    )}&appid=${API_KEY}&units=metric`;
 
-    fetchWeather();
-  }, [city, isLoggedIn]);
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.cod && Number(data.cod) !== 200) {
+          setError(data.message || "Помилка API");
+          setWeather(null);
+        } else {
+          setWeather(data);
+          setError(null);
+        }
+      })
+      .catch((err) => {
+        console.error("Error:", err);
+        setError("Не вдалося завантажити дані");
+        setWeather(null);
+      });
+  }, [city]);
 
-  if (!isLoggedIn) {
-    return null; // якщо не залогінений — нічого не показуємо
+  if (error) {
+    return <p>{error}</p>;
   }
 
   if (!weather) {
-    return <p>Завантаження даних...</p>;
+    return <p>Завантаження...</p>;
   }
 
   return (
-    <div className="detailed-weather">
-      <h2>Погода в {weather.name}</h2>
-      <div className="weather-grid">
-        <div>🌡️ Відчувається як: {weather.main.feels_like}°C</div>
-        <div>⬇️ Мін: {weather.main.temp_min}°C / ⬆️ Макс: {weather.main.temp_max}°C</div>
-        <div>💧 Вологість: {weather.main.humidity}%</div>
-        <div>⚖️ Тиск: {weather.main.pressure} hPa</div>
-        <div>💨 Вітер: {weather.wind.speed} м/с</div>
-        <div>👁️ Видимість: {weather.visibility / 1000} км</div>
+    <section className="detailedWeather">
+      <div className="container">
+        <h2>Поточна погода в {weather.name}</h2>
+        <ul className="weather-dashboard__list">
+          <li className="weather-dashboard__item">
+            <div className="weather-dashboard__label">Feels like:</div>
+            <div className="weather-dashboard__value">
+              {weather.main.feels_like}°C
+            </div>
+            <img
+              src={temp}
+              alt="Feels like icon"
+              className="weather-dashboard__icon"
+            />
+          </li>
+          <li className="weather-dashboard__item">
+            <div className="weather-dashboard__label">Min:</div>
+            <div className="weather-dashboard__value">
+              {weather.main.temp_min}°C
+            </div>
+            <div className="weather-dashboard__label">Max:</div>
+            <div className="weather-dashboard__value">{weather.main.temp_max}°C</div>
+          </li>
+          <li className="weather-dashboard__item">
+            <div className="weather-dashboard__label">Humidity:</div>
+            <div className="weather-dashboard__value">
+              {weather.main.humidity}%
+            </div>
+            <img
+              src={rain}
+              alt="Humidity icon"
+              className="weather-dashboard__icon"
+            />
+          </li>
+          <li className="weather-dashboard__item">
+            <div className="weather-dashboard__label">Pressure:</div>
+            <div className="weather-dashboard__value">
+              {weather.main.pressure} hPa
+            </div>
+            <img
+              src={pressure}
+              alt="Pressure icon"
+              className="weather-dashboard__icon"
+            />
+          </li>
+          <li className="weather-dashboard__item">
+            <div className="weather-dashboard__label">Wind speed:</div>
+            <div className="weather-dashboard__value">
+              {weather.wind.speed} m/s
+            </div>
+            <img
+              src={windy}
+              alt="Wind icon"
+              className="weather-dashboard__icon"
+            />
+          </li>
+          <li className="weather-dashboard__item">
+            <div className="weather-dashboard__label">Visibility:</div>
+            <div className="weather-dashboard__value">
+              {weather.visibility / 1000} km
+            </div>
+            <img
+              src={visibility}
+              alt="Visibility icon"
+              className="weather-dashboard__icon"
+            />
+          </li>
+        </ul>
       </div>
-    </div>
+    </section>
   );
 };
-

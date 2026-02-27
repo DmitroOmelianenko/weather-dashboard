@@ -1,1 +1,33 @@
-/*# sourceMappingURL=DetailedWeather.css.map */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+.detailedWeather {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 500;
+  background-color: #E8E8E8;
+  border-radius: 20px;
+}
+.detailedWeather .weather-dashboard__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 58px;
+}
+.detailedWeather .weather-dashboard__item {
+  width: 400px;
+  height: 237px;
+  background-color: #D9D9D9;
+  list-style: none;
+  border-radius: 10px;
+  text-align: center;
+}
+.detailedWeather .weather-dashboard__icon {
+  width: 85px;
+  height: 85px;
+  margin-top: 23px;
+}
+.detailedWeather .weather-dashboard__label {
+  padding-top: 20px;
+}
+.detailedWeather .weather-dashboard__value {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 500;
+  font-size: 32px;
+}/*# sourceMappingURL=DetailedWeather.css.map */
