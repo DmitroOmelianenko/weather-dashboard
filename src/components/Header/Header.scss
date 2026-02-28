@@ -113,3 +113,60 @@ header {
         @include font-family($fontMA, 500)
     }
 }
+
+.headerFlex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Desktop */
+.list {
+  display: flex;
+  gap: 20px;
+}
+
+.loginInfo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mobileSection {
+  display: none;
+}
+
+/* Mobile */
+@media screen and (max-width: 767px) {
+  .list,
+  .loginInfo {
+    display: none;
+  }
+
+  .mobileSection {
+    display: block;
+    position: relative;
+  }
+
+  .mobileMenu {
+    @include font-family($fontM, 500);
+    position: absolute;
+    right: 0;
+    top: 50px;
+    background: #e8e8e8;
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 160px;
+  }
+
+  .mobileMenu button {
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 8px;
+    border-radius: 6px;
+  }
+}

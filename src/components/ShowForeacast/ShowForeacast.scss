@@ -3,6 +3,8 @@
 
 
 .showForecast {
+  margin-bottom: 200px;
+
 
     .showForecastGrid {
         display: flex;
@@ -18,7 +20,6 @@
         @include font-family($fontM, 400);
         background-color: #E8E8E8;
         width: 320px;
-        height: 430px;
         border-radius: 20px;
         padding-left: 20px;
         padding-right: 20px;
@@ -293,4 +294,21 @@
 }
 
 
+}
+
+.heartButton {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.heartIcon {
+  fill: #000;
+  transition: transform 0.2s ease, fill 0.2s ease;
+}
+
+.heartButton--active .heartIcon {
+  fill: red;
+  transform: scale(1.15);
 }

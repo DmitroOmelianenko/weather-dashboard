@@ -1,82 +1,74 @@
-import React, { useState } from "react";
-import './Login.scss';
-import toast, { Toaster } from "react-hot-toast";
+import { useState } from "react";
+import "./Login.scss";
 
-export const Login = ({ onClose }) => {
-  const [isLoginView, setIsLoginView] = useState(false);
-  const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    password: ''
-  });
-
-  const handleInputChange = (e) => {
-    const { placeholder, value } = e.target;
-    if (placeholder === "Username") setFormData({ ...formData, username: value });
-    if (placeholder === "E-mail") setFormData({ ...formData, email: value });
-    if (placeholder === "Password") setFormData({ ...formData, password: value });
-  };
+export const Login = ({ onClose, onLogin }) => {
+  const [isSignUp, setIsSignUp] = useState(true);
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleAuth = () => {
-    const users = JSON.parse(localStorage.getItem('users') || '[]');
+    const users = JSON.parse(localStorage.getItem("users") || "[]");
 
-    if (!isLoginView) {
-      // Простий Sign Up без перевірок
-      users.push(formData);
-      localStorage.setItem('users', JSON.stringify(users));
-      toast.success("Реєстрація успішна!");
-      setIsLoginView(true);
-    } else {
-      // Простий Log In без перевірок
-      const user = users.find(u => u.email === formData.email && u.password === formData.password);
-      if (user) {
-        localStorage.setItem('currentUser', JSON.stringify(user));
-        toast.success(`Вітаємо, ${user.username}!`);
-        setTimeout(() => window.location.reload(), 1000);
-      } else {
-        toast.error("Користувача не знайдено!");
-      }
+    if (isSignUp) {
+      users.push({ username, email, password });
+      localStorage.setItem("users", JSON.stringify(users));
+      onClose(); // зареєструвались і закрили
+      return;
+    }
+
+    const user = users.find((u) => u.email === email && u.password === password);
+
+    if (user) {
+      localStorage.setItem("currentUser", JSON.stringify(user));
+      onLogin();
+      onClose();
     }
   };
 
   return (
-    <>
-      <Toaster />
-      <div className="backdrop" onClick={onClose}>
-        <div className="modal" onClick={(e) => e.stopPropagation()}>
-          <div className="modalContent">
-            <button className="closeModal" onClick={onClose}>Close</button>
-            
-            <h2 className="signUpText">{isLoginView ? "Log In" : "Sign Up"}</h2>
+    <div className="backdrop" onClick={onClose}>
+      <div className="modal" onClick={(e) => e.stopPropagation()}>
 
-            <form className="form">
-              {!isLoginView && (
-                <>
-                  <label htmlFor="username" className="labelUsrname">Username</label>
-                  <input type="text" placeholder="Username" className="inputUsername" onChange={handleInputChange} />
-                </>
-              )}
+        <h2 className="signUpText">{isSignUp ? "Sign Up" : "Log In"}</h2>
 
-              <label htmlFor="email" className="labelEmail">E-mail</label>
-              <input type="email" placeholder="E-mail" className="inputEmail" onChange={handleInputChange} />
+        {isSignUp && (
+          <>
+            <label className="labelUsrname">Username</label>
+            <input
+              className="inputUsername"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+          </>
+        )}
 
-              <label htmlFor="password" className="labelPassword">Password</label>
-              <input type="password" placeholder="Password" className="inputPassword" onChange={handleInputChange} />
-            </form>
+        <label className="labelEmail">E-mail</label>
+        <input
+          className="inputEmail"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
 
-            <button type="button" className="buttonSignup" onClick={handleAuth}>
-              {isLoginView ? "Log In" : "Sign Up"}
-            </button>
+        <label className="labelPassword">Password</label>
+        <input
+          className="inputPassword"
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
 
-            <p className="linkLogin">
-              {isLoginView ? "Don't have an account? " : "Already have an account? "}
-              <span className="link" onClick={() => setIsLoginView(!isLoginView)} style={{ cursor: 'pointer', color: 'blue' }}>
-                {isLoginView ? "Sign Up" : "Log In"}
-              </span>
-            </p>
-          </div>
-        </div>
+        <button className="buttonSignup" onClick={handleAuth}>
+          {isSignUp ? "Sign Up" : "Log In"}
+        </button>
+
+        <p className="linkLogin">
+          {isSignUp ? "Already have an account? " : "Don't have an account? "}
+          <span className="link" onClick={() => setIsSignUp(!isSignUp)}>
+            {isSignUp ? "Log In" : "Sign Up"}
+          </span>
+        </p>
       </div>
-    </>
+    </div>
   );
 };

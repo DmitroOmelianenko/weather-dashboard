@@ -9,6 +9,8 @@ import { ImagesGalery } from "./components/ImagesGalery/ImagesGalery.jsx";
 import { Footer } from "./components/Footer/Footer.jsx";
 import { DetailedWeather } from "./components/HiddenFunctions/DetailedWeather/DetailedWeather.jsx";
 // import { HourlyForecastChart } from "./components/HiddenFunctions/Schedule/Schedule.jsx";
+import { ForecastOn8Days } from "./components/HiddenFunctions/ForecastOn8Days/ForecastOn8Days.jsx";
+import { HourlyForecastChart } from "./components/HiddenFunctions/Schedule/Schedule.jsx";
 
 const API_KEY = "fb76fda02c6e2aed31e4ed44cf3f1f65";
 const STORAGE_KEY = "weather_cards_v1";
@@ -59,6 +61,8 @@ const App = () => {
         return;
       }
       const data = await res.json();
+
+      
 
       const newCard = {
         id: Date.now(),
@@ -137,16 +141,38 @@ const App = () => {
 
   return (
     <>
-      {isModalOpen && <Login onClose={() => setIsModalOpen(false)} />}
+    {isModalOpen && (
+  <Login
+    onClose={() => setIsModalOpen(false)}
+    onLogin={() => setIsAuth(true)}
+  />
+)}
       <Header onOpenModal={() => setIsModalOpen(true)} onLogout={handleLogout} isAuth={isAuth} />
-      <Hero query={query} setQuery={setQuery} onSearch={() => onSearch()} />
+<Hero query={query} setQuery={setQuery} onSearch={() => onSearch(query)} /> 
       <ShowForecast
-        cards={cards}
-        onDelete={deleteCard}
-        onToggleFavorite={toggleFavorite}
-        onRefreshCard={refreshCard}
-      />
-      <DetailedWeather city={city}/>
+  cards={cards}
+  onDelete={deleteCard}
+  onToggleFavorite={toggleFavorite}
+  onRefreshCard={refreshCard}
+  isAuth={isAuth}
+/>
+    {isAuth && (
+  <section id="detailed">
+    <DetailedWeather city={city} />
+  </section>
+)}
+
+{isAuth && (
+  <section id="hourly">
+    <HourlyForecastChart city={city} />
+  </section>
+)}
+
+{isAuth && (
+  <section id="forecast8">
+    <ForecastOn8Days city={city} />
+  </section>
+)}
       <FactsDay />
       <ImagesGalery />
       <Footer />

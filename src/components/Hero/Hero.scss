@@ -7,6 +7,7 @@
     background-image: linear-gradient(rgba(47, 48, 58, 0.40), rgba(47, 48, 58, 0.40)), url(../../images/background.png);
     background-size: cover;
     max-width: 100%;
+    padding-bottom: 40px;
 
     @media screen and (min-width: 768px) {
         padding-top: 40px;
@@ -46,7 +47,7 @@
 
     .heroFlex {
         display: flex;
-
+        margin-left: 50px;
         margin-top: 80px;
 
         @media screen and (min-width: 768px) {
@@ -60,20 +61,32 @@
         .heroInfo {
             color: white;
            @include font-family($fontM, 400);
-           font-size: 24px;
+           font-size: 20px;
+           max-width: 130px;
 
             @media screen and (min-width: 768px) {
               @include font-family($fontM, 400);
+              max-width: 200px;
             }
 
             @media screen and (min-width: 1200px) {
                  @include font-family($fontM, 400);
+                 max-width: 400px;
             }
         }
 
         .heroDate {
             color: white;
-            @include font-family($fontM, 600)
+            @include font-family($fontM, 600);
+            max-width: 140px;
+
+            @media screen and (min-width: 768px) {
+                max-width: 200px;
+            }
+
+            @media screen and (min-width: 1200px) {
+                max-width: 400px;
+            }
         }
     }
 

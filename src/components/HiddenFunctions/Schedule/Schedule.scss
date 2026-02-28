@@ -1,0 +1,47 @@
+@use "../../../styles/global" as *;
+@use "../../../styles/variebles" as *;
+
+
+.hourly {
+  @include font-family($fontM, 400);
+  padding: 40px 0;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-bottom: 100px;
+}
+
+.hourly__wrapper {
+  width: 1140px;
+  height: 380px;
+  background: #e8e8e8;
+  border-radius: 20px;
+  padding: 22px 24px;
+  margin-left: auto;
+  margin-right: auto;
+
+
+  @media screen and (max-width: 1199px) {
+    width: 640px;
+    height: 380px;
+    
+  }
+
+  @media screen and (max-width: 767px) {
+    width: 280px;
+    height: 360px;
+    padding: 16px 12px;
+  }
+}
+
+.hourly__title {
+  font-weight: 600;
+  font-size: 16px;
+  color: #000;
+  margin-bottom: 14px;
+}
+
+.hourly__chart {
+  width: 100%;
+  height: calc(100% - 30px);
+}

@@ -1,18 +1,25 @@
 @use "../../../styles/variebles" as *;
 
-.detailedWeather {
+.detailedWeaather {
     @include font-family($fontMA, 500);
     background-color: #E8E8E8;
     border-radius: 20px;
+    width: 100%;
+  background-color: #E8E8E8;
+  border-radius: 20px;
+  padding: 40px 0; /* щоб був відступ зверху/знизу */
+  margin-bottom: 100px;
 
-   .weather-dashboard__list {
+   .weaather-dashboard__list {
+   
     display: flex;
     flex-wrap: wrap;
     gap: 58px;
+    justify-content: center;
    }
 
    .weather-dashboard__item {
-    width: 400px;
+    width: 200px;
     height: 237px;
     // padding-left: 102;
     // padding-right: 103px;
@@ -22,6 +29,14 @@
     list-style: none;
     border-radius: 10px;
     text-align: center;
+
+    @media screen and (min-width: 768px) {
+        
+    }
+
+    @media screen and (min-width: 1200px) {
+        width: 400px;
+    }
    }
 
    .weather-dashboard__icon {
