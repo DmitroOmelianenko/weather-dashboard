@@ -8,13 +8,33 @@ footer {
 
    .footerFlex {
     display: flex;
+    flex-direction: column;
+   //  justify-content: left;
+    align-items:first baseline;
     gap: 103px;
+
+    @media screen and (min-width: 768px) {
+      flex-wrap: wrap;
+    }
+
+    @media screen and (min-width: 1200px) {
+      flex-direction: row;
+    }
    }
 
    .footerList {
       display: flex;
+      flex-direction: column;
       gap: 103px;
       list-style: none;
+
+        @media screen and (min-width: 768px) {
+         flex-wrap: wrap;
+      }
+
+      @media screen and (min-width: 1200px) {
+         flex-direction: row;
+      }
    }
 
    .socialsList {
@@ -22,6 +42,8 @@ footer {
       list-style: none;
       gap: 20px;
       padding: 0;
+
+    
    }
 
    .footerDescriprionAddress {
