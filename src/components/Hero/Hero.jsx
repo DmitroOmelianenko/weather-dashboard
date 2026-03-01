@@ -1,8 +1,10 @@
-import React, { useState } from "react";
-import line from "../../images/linehero.svg";
-import search from "../../images/search.svg";
-import "../../styles/_global.scss";
-import "./Hero.scss";
+
+import React from "react";
+import line from '../../images/linehero.svg'
+import search from '../../images/search.svg'
+import '../../styles/_global.scss'
+import './Hero.scss'
+
 
 export const Hero = ({ query, setQuery, onSearch }) => {
   const [error, setError] = useState(false);
