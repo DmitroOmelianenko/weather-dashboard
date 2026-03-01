@@ -1,4 +1,3 @@
-// Hero.jsx
 import React from "react";
 import line from '../../images/linehero.svg'
 import search from '../../images/search.svg'
