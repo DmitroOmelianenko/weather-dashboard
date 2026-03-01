@@ -11,13 +11,18 @@ export const Login = ({ onClose, onLogin }) => {
     const users = JSON.parse(localStorage.getItem("users") || "[]");
 
     if (isSignUp) {
-      users.push({ username, email, password });
+      const newUser = { username, email, password };
+      users.push(newUser);
       localStorage.setItem("users", JSON.stringify(users));
-      onClose(); // зареєструвались і закрили
+      localStorage.setItem("currentUser", JSON.stringify(newUser));
+      onLogin();
+      onClose();
       return;
     }
 
-    const user = users.find((u) => u.email === email && u.password === password);
+    const user = users.find(
+      (u) => u.email === email && u.password === password
+    );
 
     if (user) {
       localStorage.setItem("currentUser", JSON.stringify(user));
@@ -29,7 +34,6 @@ export const Login = ({ onClose, onLogin }) => {
   return (
     <div className="backdrop" onClick={onClose}>
       <div className="modal" onClick={(e) => e.stopPropagation()}>
-
         <h2 className="signUpText">{isSignUp ? "Sign Up" : "Log In"}</h2>
 
         {isSignUp && (

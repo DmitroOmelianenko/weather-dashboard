@@ -1,18 +1,38 @@
+
 import React from "react";
 import line from '../../images/linehero.svg'
 import search from '../../images/search.svg'
 import '../../styles/_global.scss'
 import './Hero.scss'
 
+
 export const Hero = ({ query, setQuery, onSearch }) => {
+  const [error, setError] = useState(false);
+
   const today = new Date();
-  const options = { year: "numeric", month: "long", day: "numeric", weekday: "long" };
+  const options = {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    weekday: "long"
+  };
   const formattedDate = today.toLocaleDateString("en-US", options);
+
+  const handleSearch = () => {
+    if (!query.trim()) {
+      setError(true);
+      setTimeout(() => setError(false), 2000);
+      return;
+    }
+
+    onSearch();
+  };
 
   return (
     <section className="hero">
       <div className="container">
         <h1 className="heroTitle">Weather dashboard</h1>
+
         <div className="heroFlex">
           <img src={line} alt="linehero" className="heroLine" />
           <div className="heroTextGroup">
@@ -26,13 +46,14 @@ export const Hero = ({ query, setQuery, onSearch }) => {
         <div className="heroFlex2" style={{ position: "relative" }}>
           <input
             type="text"
-            className="heroInput"
+            className={`heroInput ${error ? "inputError" : ""}`}
             placeholder="Search location..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            onKeyPress={(e) => e.key === "Enter" && onSearch()}
+            onKeyDown={(e) => e.key === "Enter" && handleSearch()}
           />
-          <button type="button" className="search" onClick={onSearch}>
+
+          <button type="button" className="search" onClick={handleSearch}>
             <img src={search} alt="search" />
           </button>
         </div>
@@ -40,4 +61,3 @@ export const Hero = ({ query, setQuery, onSearch }) => {
     </section>
   );
 };
-

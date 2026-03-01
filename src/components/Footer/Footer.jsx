@@ -22,13 +22,22 @@ export const Footer = () => {
                             <h2 className="footerLinkTitle">Contact us</h2>
                             <ul className="socialsList">
                                 <li className="socialsItem">
-                                    <img src={insta} alt="" className="socialsPhoto" />
+                                    <a href="https://www.instagram.com/" target="blank">
+                                        <img src={insta} alt="" className="socialsPhoto" />
+                                    </a>
+
                                 </li>
                                 <li className="socialsItem">
-                                    <img src={facebook} alt="" className="socialsPhoto" />
+                                    <a href="https://www.facebook.com/" target="blank">
+                                         <img src={facebook} alt="" className="socialsPhoto" />
+                                    </a>
+
                                 </li>
                                 <li className="socialsItem">
-                                    <img src={whatsapp} alt="" className="socialsPhoto" />
+                                    <a href="https://web.whatsapp.com/" target="blank">
+                                        <img src={whatsapp} alt="" className="socialsPhoto" />
+                                    </a>
+
                                 </li>
                             </ul>
                         </li>

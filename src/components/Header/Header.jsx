@@ -4,8 +4,10 @@ import user from "../../images/user.png";
 import list from "../../images/listmenu.svg";
 import "./Header.scss";
 
-export const Header = ({ onOpenModal }) => {
+export const Header = ({ onOpenModal, currentUser, onLogout }) => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const closeMobile = () => setIsOpen(false);
 
   return (
     <header>
@@ -14,19 +16,36 @@ export const Header = ({ onOpenModal }) => {
           <img src={logo} alt="logo" />
 
           <ul className="list">
-            <li className="item"><h3 className="links">Who we are</h3></li>
-            <li className="item"><h3 className="links">Contacts</h3></li>
-            <li className="item"><h3 className="links">Menu</h3></li>
+            <li className="item">
+              <a href="#about" className="links">Who we are</a>
+            </li>
+
+            <li className="item">
+              <a href="#contacts" className="links">Contacts</a>
+            </li>
+
+            <li className="item">
+              <a href="#menu" className="links">Menu</a>
+            </li>
           </ul>
 
           <div className="loginInfo">
-            <button onClick={onOpenModal} className="buttonSignUp">
-              Sign Up
-            </button>
+            {currentUser ? (
+              <>
+                <span className="welcomeText">Вітаємо, {currentUser.username}</span>
+                <button className="buttonSignUp logoutButton" onClick={onLogout}>
+                  Log Out
+                </button>
+              </>
+            ) : (
+              <button onClick={onOpenModal} className="buttonSignUp">
+                Sign Up
+              </button>
+            )}
+
             <img src={user} alt="user" />
           </div>
 
-          {/* Mobile button */}
           <div className="mobileSection">
             <button
               type="button"
@@ -39,10 +58,33 @@ export const Header = ({ onOpenModal }) => {
 
             {isOpen && (
               <div className="mobileMenu">
-                <h3>Who we are</h3>
-                <h3>Contacts</h3>
-                <h3>Menu</h3>
-                <button onClick={onOpenModal}>Sign Up</button>
+                <a href="#about" onClick={closeMobile}>Who we are</a>
+                <a href="#contacts" onClick={closeMobile}>Contacts</a>
+                <a href="#menu" onClick={closeMobile}>Menu</a>
+
+                {currentUser ? (
+                  <>
+                    <h3 className="welcome">Вітаємо, {currentUser.username}</h3>
+                    <button
+                      className="buttonSignUp logoutButton"
+                      onClick={() => {
+                        onLogout();
+                        closeMobile();
+                      }}
+                    >
+                      Log Out
+                    </button>
+                  </>
+                ) : (
+                  <button
+                    onClick={() => {
+                      onOpenModal();
+                      closeMobile();
+                    }}
+                  >
+                    Sign Up
+                  </button>
+                )}
               </div>
             )}
           </div>
