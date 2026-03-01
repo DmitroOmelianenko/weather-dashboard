@@ -16,12 +16,17 @@ const STORAGE_KEY = "weather_cards_v1";
 export default function App() {
   const [open, setOpen] = useState(false);
   const [auth, setAuth] = useState(false);
+  const [currentUser, setCurrentUser] = useState(
+    JSON.parse(localStorage.getItem("currentUser") || "null")
+  );
   const [query, setQuery] = useState("");
   const [city, setCity] = useState("Kyiv");
   const [cards, setCards] = useState([]);
 
   useEffect(() => {
     setAuth(!!localStorage.getItem("currentUser"));
+    setCurrentUser(JSON.parse(localStorage.getItem("currentUser") || "null"));
+
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved) setCards(JSON.parse(saved));
   }, []);
@@ -33,6 +38,7 @@ export default function App() {
   const logout = () => {
     localStorage.removeItem("currentUser");
     setAuth(false);
+    setCurrentUser(null);
   };
 
   const makeCard = (data) => ({
@@ -85,14 +91,32 @@ export default function App() {
   const refresh = async (id) => {
     const card = cards.find((c) => c.id === id);
     const data = await fetchWeather(card.city.name);
-    setCards((p) => p.map((c) => (c.id === id ? { ...c, ...makeCard(data), id } : c)));
+    setCards((p) =>
+      p.map((c) => (c.id === id ? { ...c, ...makeCard(data), id } : c))
+    );
   };
 
   return (
     <>
-      {open && <Login onClose={() => setOpen(false)} onLogin={() => setAuth(true)} />}
+      {open && (
+        <Login
+          onClose={() => setOpen(false)}
+          onLogin={() => {
+            setAuth(true);
+            setCurrentUser(
+              JSON.parse(localStorage.getItem("currentUser") || "null")
+            );
+          }}
+        />
+      )}
 
-      <Header onOpenModal={() => setOpen(true)} onLogout={logout} isAuth={auth} />
+      <Header
+        onOpenModal={() => setOpen(true)}
+        onLogout={logout}
+        isAuth={auth}
+        currentUser={currentUser}
+      />
+
       <Hero query={query} setQuery={setQuery} onSearch={() => onSearch(query)} />
 
       <ShowForecast
@@ -117,9 +141,15 @@ export default function App() {
         </>
       )}
 
-      <FactsDay />
-      <ImagesGalery />
-      <Footer />
+      <section id="about">
+  <FactsDay />
+</section>
+     <section id="menu">
+  <ImagesGalery />
+</section>
+     <section id="contacts">
+  <Footer />
+</section>
     </>
   );
 }

@@ -170,3 +170,69 @@ header {
     border-radius: 6px;
   }
 }
+
+.welcomeText {
+  margin-right: 15px;
+  font-weight: 600;
+}
+
+.logoutButton {
+  background-color: #ff4d4f;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.logoutButton:hover {
+  background-color: #d9363e;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.mobileMenu a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 10px 0;
+  cursor: pointer;
+}
+
+.mobileMenu a:hover {
+  opacity: 0.8;
+}
+
+.welcomeText {
+  margin-right: 12px;
+  font-weight: 600;
+}
+
+.logoutButton {
+  background-color: #ff4d4f;
+  border: none;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.logoutButton:hover {
+  background-color: #d9363e;
+}
+
+.links {
+    @include font-family($fontMA, 600);
+    color: #000;
+    text-decoration: none;
+}
+
+.welcome {
+    @include font-family($fontM, 500);
+}
